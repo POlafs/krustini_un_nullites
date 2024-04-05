@@ -1,3 +1,5 @@
+from colorama import Fore, Style
+
 def zime_laukumu(vietas):
     Laukums = (f"|{vietas[1]}|{vietas[2]}|{vietas[3]}|\n"
             f"|{vietas[4]}|{vietas[5]}|{vietas[6]}|\n"
@@ -6,9 +8,9 @@ def zime_laukumu(vietas):
 
 def parbauda_kartu(karta):
     if karta % 2 == 0:
-        return '0'
+        return Fore.LIGHTGREEN_EX + '0'+ Style.RESET_ALL
     else:
-        return 'X'
+        return Fore.CYAN + 'X'+ Style.RESET_ALL
 
 vietas = {
 1: '1',
@@ -38,9 +40,9 @@ or vietas[3] == vietas[5] == vietas[7]):
     return uzvar
 while Spēle == 0:
     if karta %2==0:
-        print("1. spēlētāja kārta")
+        print(Fore.CYAN +"1. spēlētāja kārta"+ Style.RESET_ALL)
     else:
-        print("2. spēlētāja kārta")
+        print(Fore.LIGHTGREEN_EX+ "2. spēlētāja kārta"+ Style.RESET_ALL)
     zime_laukumu(vietas)
     izvele = input("Izvēlies vietu no (1-9) vai q, lai beigtu: ")
     if izvele == "q":
@@ -50,14 +52,16 @@ while Spēle == 0:
         karta += 1
         vietas[int(izvele)] = parbauda_kartu(karta)
         uzvar = parabauda_uzvara(vietas, uzvar)
+    else:
+        print(Fore.RED+"Ievadi derīgu vietu"+ Style.RESET_ALL)
     if uzvar == 1:
         break
     if karta == 9 and uzvar == 0:
-        print("Neizšķirts!")
+        print(Fore.LIGHTYELLOW_EX + "Neizšķirts!" + Style.RESET_ALL)
         break
 zime_laukumu(vietas)
 if uzvar == 1:
     if parbauda_kartu(karta) == 'X':
-        print("1. spēlētājs UZVAR!")
+        print(Fore.LIGHTCYAN_EX+"1. spēlētājs UZVAR!"+ Style.RESET_ALL)
     else:
-        print("2. spēlētājs UZVAR!")
+        print(Fore.LIGHTGREEN_EX+"2. spēlētājs UZVAR!"+ Style.RESET_ALL)
