@@ -48,7 +48,8 @@ while Spēle == 0:
     if izvele == "q":
         print("Paldies par spēlēšanu!")
         Spēle += 1
-    elif izvele.isdigit() and int(izvele) in vietas and vietas[int(izvele)] not in {"X","0"}:
+    elif izvele.isdigit() and int(izvele) in vietas and vietas[int(izvele)] not in {Fore.CYAN + "X"+ Style.RESET_ALL
+,Fore.LIGHTGREEN_EX + '0'+ Style.RESET_ALL}:
         karta += 1
         vietas[int(izvele)] = parbauda_kartu(karta)
         uzvar = parabauda_uzvara(vietas, uzvar)
@@ -61,7 +62,7 @@ while Spēle == 0:
         break
 zime_laukumu(vietas)
 if uzvar == 1:
-    if parbauda_kartu(karta) == 'X':
+    if parbauda_kartu(karta) == Fore.CYAN + 'X'+ Style.RESET_ALL:
         print(Fore.LIGHTCYAN_EX+"1. spēlētājs UZVAR!"+ Style.RESET_ALL)
     else:
         print(Fore.LIGHTGREEN_EX+"2. spēlētājs UZVAR!"+ Style.RESET_ALL)
